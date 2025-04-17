@@ -2,9 +2,9 @@
 Linux File System
 ![hN4lt](https://github.com/user-attachments/assets/8119bca3-ac51-4b90-9b76-397c84a9c4ed)
 
-# 🅰️ Essential Apache HTTP Server Files
+# 🅽 Essential NGINX Files for DevOps Engineers
 
-Apache (httpd) is a widely-used open-source web server. Here are the key files and directories DevOps engineers should know:
+NGINX is a high-performance web server, reverse proxy, and load balancer. Below are the most important config and log files to know.
 
 ---
 
@@ -12,23 +12,13 @@ Apache (httpd) is a widely-used open-source web server. Here are the key files a
 
 | File Path | Description |
 |-----------|-------------|
-| `/etc/httpd/conf/httpd.conf` | Main Apache config file (RHEL/CentOS). |
-| `/etc/apache2/apache2.conf` | Main config (Debian/Ubuntu). |
-| `/etc/apache2/envvars` | Environment variables for Apache processes. |
-| `/etc/apache2/ports.conf` | Configures which ports Apache listens on. |
-| `/etc/apache2/sites-available/` | Virtual host definitions (not active by default). |
-| `/etc/apache2/sites-enabled/` | Symlinks to active virtual hosts. |
-| `/etc/httpd/conf.d/*.conf` | Additional config files loaded automatically (RHEL/CentOS). |
+| `/etc/nginx/nginx.conf` | Main NGINX configuration file. |
+| `/etc/nginx/conf.d/` | Directory for site or service-specific config files. |
+| `/etc/nginx/sites-available/` | Site definitions (not active by default). |
+| `/etc/nginx/sites-enabled/` | Symlinks to active site configurations. |
+| `/etc/nginx/mime.types` | MIME type mappings. |
 
----
-
-## 📁 Modules
-
-| File/Dir | Description |
-|----------|-------------|
-| `/etc/httpd/modules/` | Compiled Apache modules (RHEL/CentOS). |
-| `/etc/apache2/mods-available/` | Available modules (Debian/Ubuntu). |
-| `/etc/apache2/mods-enabled/` | Symlinks to enabled modules. |
+> On many distributions, only `nginx.conf` and `conf.d/` are used by default. The `sites-*` structure is popular in Ubuntu but not standard in all systems.
 
 ---
 
@@ -36,31 +26,27 @@ Apache (httpd) is a widely-used open-source web server. Here are the key files a
 
 | File Path | Description |
 |-----------|-------------|
-| `/var/log/httpd/access_log` | Access logs (RHEL/CentOS). |
-| `/var/log/httpd/error_log` | Error logs (RHEL/CentOS). |
-| `/var/log/apache2/access.log` | Access logs (Debian/Ubuntu). |
-| `/var/log/apache2/error.log` | Error logs (Debian/Ubuntu). |
+| `/var/log/nginx/access.log` | Access logs for served requests. |
+| `/var/log/nginx/error.log` | Error logs and startup/shutdown events. |
 
 ---
 
 ## ✅ Useful Commands
 
 ```bash
-# Test configuration for syntax errors
-apachectl configtest
+# Check config syntax
+nginx -t
 
-# Start / stop / restart Apache
-systemctl start apache2      # Debian/Ubuntu
-systemctl start httpd        # RHEL/CentOS
+# Reload configuration without downtime
+nginx -s reload
 
-# Enable a site (Debian/Ubuntu)
-a2ensite example.conf
-a2dissite example.conf
+# Start / stop / restart NGINX
+systemctl start nginx
+systemctl stop nginx
+systemctl restart nginx
 
-# Enable a module
-a2enmod rewrite
-a2dismod rewrite
+# View active NGINX processes
+ps aux | grep nginx
 
-# Reload
-systemctl reload apache2     # Debian/Ubuntu
-systemctl reload httpd       # RHEL/CentOS
+# Always validate config before reloading
+nginx -t && systemctl reload nginx
