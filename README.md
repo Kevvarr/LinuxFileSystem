@@ -40,3 +40,23 @@ Apache (httpd) is a widely-used open-source web server. Here are the key files a
 | `/var/log/httpd/error_log` | Error logs (RHEL/CentOS). |
 | `/var/log/apache2/access.log` | Access logs (Debian/Ubuntu). |
 | `/var/log/apache2/error.log` | Error logs (Debian/Ubuntu). |
+
+---
+
+## ✅ Useful Commands
+
+```bash
+# Test configuration for syntax errors
+apachectl configtest
+
+# Start / stop / restart Apache
+systemctl start apache2      # Debian/Ubuntu
+systemctl start httpd        # RHEL/CentOS
+
+# Enable a site (Debian/Ubuntu)
+a2ensite example.conf
+a2dissite example.conf
+
+# Enable a module
+a2enmod rewrite
+a2dismod rewrite
