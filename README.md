@@ -60,3 +60,7 @@ a2dissite example.conf
 # Enable a module
 a2enmod rewrite
 a2dismod rewrite
+
+# Reload
+systemctl reload apache2     # Debian/Ubuntu
+systemctl reload httpd       # RHEL/CentOS
