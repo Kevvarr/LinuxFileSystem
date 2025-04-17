@@ -14,7 +14,7 @@ Linux File System
 | `/etc/hosts` | Static hostnames to IP mappings. |
 | `/etc/fstab` | Filesystem mount table (auto mounts on boot). |
 | `/etc/*release` | OS information. |
-| `~/.bashrc` | Customize PATH, environment variables, aliases, etc
+| `~/.bashrc` | Customize PATH, environment variables, aliases, etc (source ~/.bashrc to restart)
 
 ---
 
