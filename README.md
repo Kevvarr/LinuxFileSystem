@@ -1,6 +1,6 @@
-# LinuxFileSystem
+# LinuxFileSystem for personal use
 Linux File System
-![hN4lt](https://miro.medium.com/v2/resize:fit:1372/0*X34tDynHLvheJOKN)
+![hN4lt](https://github.com/user-attachments/assets/8119bca3-ac51-4b90-9b76-397c84a9c4ed)
 
 ## 🔧 System Configuration Files
 
